@@ -28,10 +28,16 @@
           # 其 RegisterStatusNotifierItem 参数带路径，waybar 等 watcher 会拒绝），
           # Wayland 下无 XEmbed 兜底，托盘因此无图标；退回 Electron 42 恢复。
           (splayer-next.override { electron_43 = electron_42; })
-          bilibili
+          (bilibili.override { electron = electron_42; })
+          obsidian
+          obs-studio
           # 系统监视器
           # inputs.rproc.packages.${pkgs.stdenv.hostPlatform.system}.default
           inputs.tuxManager.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+          vlc
+          mplayer
+          hypridle
         ];
       };
 

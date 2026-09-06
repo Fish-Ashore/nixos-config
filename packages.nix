@@ -47,6 +47,7 @@
     gsettings-desktop-schemas
     # clash-verge-rev
     pkgsStable.flclash # 仅 26.05 有，unstable 已移除
+    ntfs3g
   ];
 
   fonts.packages = with pkgs; [
