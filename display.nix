@@ -22,7 +22,4 @@
 
   # 桌面程序
   programs.niri.enable = true;
-  programs.waybar.enable = true;
-  programs.hyprlock.enable = true;
-  security.pam.services.hyprlock = { };
 }

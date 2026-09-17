@@ -34,9 +34,12 @@
     enable = true;
     powerOnBoot = true;
   };
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
 
   # 移动存储自动挂载
   services.udisks2.enable = true;
   services.devmon.enable = true;
+  # 回收站
+  services.gvfs.enable = true;
+
 }

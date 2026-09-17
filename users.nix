@@ -10,6 +10,7 @@
       "networkmanager"
       "wheel"
       "libvirtd" # 允许管理 KVM 虚拟机（无需密码）
+      "input"
     ];
   };
 }

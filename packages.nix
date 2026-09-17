@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     git
     vim
-    awww
     ffmpeg
     libva
     libva-utils
@@ -24,6 +23,7 @@
     pciutils
     mesa-demos
     xwayland-satellite
+    libsForQt5.qt5ct
     wechat
     qq
     btop
@@ -32,22 +32,27 @@
     jetbrains.pycharm
     jetbrains.clion
     jetbrains.datagrip
+    android-studio
+
     python314
     uv
     jdk25
     gcc
     gdb
     nodejs
+    pnpm
     go
-
+    maven
+    kotlin
+    gradle
     # 提供 org.gnome.desktop.* 等 gsettings 架构。必须放系统级才会进入
     # /run/current-system/sw/share/gsettings-schemas（XDG_DATA_DIRS 默认包含），
     # 否则 GTK 应用读不到 gtk-theme / color-scheme / icon-theme，主题不生效。
     glib
     gsettings-desktop-schemas
-    # clash-verge-rev
     pkgsStable.flclash # 仅 26.05 有，unstable 已移除
     ntfs3g
+    fzf
   ];
 
   fonts.packages = with pkgs; [

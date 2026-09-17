@@ -6,7 +6,11 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
+    # 让 HM 用户模块（如 rproc.nix）也能拿到 flake inputs。
+    extraSpecialArgs = { inherit inputs; };
+
     users."hy" = {
+      imports = [ ./rproc.nix ];
       home = {
         stateVersion = "26.05";
         packages = with pkgs; [
@@ -15,36 +19,30 @@
           zed-editor-fhs
           nautilus
           alacritty
-          fuzzel
           inputs.mark-shot.packages.${pkgs.stdenv.hostPlatform.system}.default
-          mako
           orchis-theme
           papirus-icon-theme
 
-          cliphist
-          wl-clipboard # cliphist 依赖这个来操作剪贴板
+          wl-clipboard # 命令行剪贴板工具（wl-copy / wl-paste）
 
           # Electron 43.4.1 托盘 SNI 注册被 Chromium 回归弄坏（electron/electron#53213，
-          # 其 RegisterStatusNotifierItem 参数带路径，waybar 等 watcher 会拒绝），
+          # 其 RegisterStatusNotifierItem 参数带路径，noctalia 等 watcher 会拒绝），
           # Wayland 下无 XEmbed 兜底，托盘因此无图标；退回 Electron 42 恢复。
           (splayer-next.override { electron_43 = electron_42; })
           (bilibili.override { electron = electron_42; })
           obsidian
           obs-studio
-          # 系统监视器
-          # inputs.rproc.packages.${pkgs.stdenv.hostPlatform.system}.default
-          inputs.tuxManager.packages.${pkgs.stdenv.hostPlatform.system}.default
+          # 系统监视器见 rproc.nix
+          # inputs.tuxManager.packages.${pkgs.stdenv.hostPlatform.system}.default
 
           vlc
           mplayer
-          hypridle
+          fastfetch
+          polkit_gnome
+          noctalia
+          qbittorrent
+          evtest
         ];
-      };
-
-      services.cliphist = {
-        enable = true;
-        systemdTargets = [ "graphical-session.target" ]; # 随图形界面启动
-        allowImages = true; # 记录图片
       };
 
       dconf.settings = {

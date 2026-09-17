@@ -25,10 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tuxManager = {
-      url = "github:benapetr/TuxManager/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # tuxManager = {
+    #   url = "github:benapetr/TuxManager/";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nur.url = "github:nix-community/NUR";
 
     home-manager = {
