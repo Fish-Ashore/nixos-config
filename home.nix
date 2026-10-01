@@ -17,6 +17,7 @@
           google-chrome
           firefox
           zed-editor-fhs
+          vscode-fhs
           nautilus
           alacritty
           inputs.mark-shot.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -42,6 +43,11 @@
           noctalia
           qbittorrent
           evtest
+          nomacs
+          pluma
+          tesseract
+
+          postman
         ];
       };
 

@@ -7,11 +7,21 @@
 
   networking.firewall.enable = true;
 
+  # 允许虚拟机通过宿主机代理（Clash 监听 7890）
+  networking.firewall.interfaces.virbr0.allowedTCPPorts = [ 7890 ];
+
   # 登录会话的代理环境变量（若代理不支持可去掉 all_proxy）
+  # environment.sessionVariables = {
+  #   http_proxy = "http://127.0.0.1:7890";
+  #   https_proxy = "http://127.0.0.1:7890";
+  #   all_proxy = "socks5://127.0.0.1:7890";
+  #   no_proxy = "localhost,127.0.0.1,::1";
+  # };
+
   environment.sessionVariables = {
-    http_proxy = "http://127.0.0.1:7890";
-    https_proxy = "http://127.0.0.1:7890";
-    all_proxy = "socks5://127.0.0.1:7890";
+    http_proxy = "http://10.10.145.228:7890";
+    https_proxy = "http://10.10.145.228:7890";
+    all_proxy = "socks5://10.10.145.228:7890";
     no_proxy = "localhost,127.0.0.1,::1";
   };
 

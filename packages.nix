@@ -37,10 +37,12 @@
     python314
     uv
     jdk25
+    jdt-language-server
     gcc
     gdb
     nodejs
     pnpm
+    eslint
     go
     maven
     kotlin
@@ -55,9 +57,31 @@
     fzf
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts._0xproto
-    pkgs.nur.repos.rewine.ttf-wps-fonts
-    nerd-fonts.jetbrains-mono
-  ];
+  # 1. 安装中文字体包
+   fonts.packages = with pkgs; [
+     noto-fonts-cjk-sans     # 思源黑体，推荐的无衬线中文字体
+     noto-fonts-cjk-serif    # 思源宋体，推荐的衬线中文字体
+     wqy_zenhei              # 文泉驿正黑，经典的无衬线中文字体
+     noto-fonts-color-emoji  # Emoji 支持
+     nerd-fonts._0xproto
+     # pkgs.nur.repos.rewine.ttf-wps-fonts
+     nerd-fonts.jetbrains-mono
+     lxgw-wenkai
+   ];
+
+   # 2. 配置 Fontconfig 默认字体
+   fonts.fontconfig = {
+     enable = true; # 确保 fontconfig 服务已启用
+
+     defaultFonts = {
+       # 无衬线字体族：中文字体放在英文字体之后作为回退
+       sansSerif = [ "Noto Sans" "Noto Sans CJK SC" "WenQuanYi Zen Hei" ];
+       # 衬线字体族
+       serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+       # 等宽字体族
+       monospace = [ "Fira Code" "Noto Sans Mono CJK SC" ];
+       # Emoji 字体
+       emoji = [ "Noto Color Emoji" ];
+     };
+   };
 }
