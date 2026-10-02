@@ -7,12 +7,6 @@
     variant = "";
   };
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  security.pam.services.sddm.enableGnomeKeyring = true;
-
   # 音频（PipeWire）
   services.pipewire = {
     enable = true;

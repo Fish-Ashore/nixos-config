@@ -39,7 +39,7 @@
           vlc
           mplayer
           fastfetch
-          polkit_gnome
+          # polkit_gnome
           noctalia
           qbittorrent
           evtest

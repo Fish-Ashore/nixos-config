@@ -63,7 +63,7 @@
         };
         modules = [
           ./configuration.nix
-          ./silent-sddm.nix
+          ./noctalia-greeder.nix
           elegant-grub2-themes.nixosModules.default
           home-manager.nixosModules.home-manager
           ./home.nix
