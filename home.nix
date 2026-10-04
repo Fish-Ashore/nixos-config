@@ -26,11 +26,8 @@
 
           wl-clipboard # 命令行剪贴板工具（wl-copy / wl-paste）
 
-          # Electron 43.4.1 托盘 SNI 注册被 Chromium 回归弄坏（electron/electron#53213，
-          # 其 RegisterStatusNotifierItem 参数带路径，noctalia 等 watcher 会拒绝），
-          # Wayland 下无 XEmbed 兜底，托盘因此无图标；退回 Electron 42 恢复。
-          (splayer-next.override { electron_43 = electron_42; })
-          (bilibili.override { electron = electron_42; })
+          splayer-next
+          bilibili
           obsidian
           obs-studio
           # 系统监视器见 rproc.nix
@@ -46,8 +43,9 @@
           nomacs
           pluma
           tesseract
-
           postman
+          android-tools
+          rustup
         ];
       };
 

@@ -55,6 +55,7 @@
     pkgsStable.flclash # 仅 26.05 有，unstable 已移除
     ntfs3g
     fzf
+    gitui
   ];
 
   # 1. 安装中文字体包

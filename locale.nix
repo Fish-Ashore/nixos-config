@@ -18,6 +18,17 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
+  # 声明系统支持的中文区域设置
+  # 注意：i18n.supportedLocales 的格式与 extraLocaleSettings 不同，需要带上 /UTF-8
+  i18n.supportedLocales = [
+    "zh_CN.UTF-8/UTF-8"
+    "en_US.UTF-8/UTF-8" # 建议保留英文作为备选
+  ];
+
+  environment.variables = {
+    LANGUAGE = "zh_CN:en_US";
+  };
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
