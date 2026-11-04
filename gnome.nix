@@ -21,5 +21,6 @@
 
   environment.systemPackages = with pkgs; [
     gnome-tweaks
+    gnome-system-monitor
   ];
 }

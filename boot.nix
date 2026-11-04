@@ -44,4 +44,11 @@
       logo = "system";
     };
   };
+
+  # 规避 NixOS/nixpkgs#577729：6.18.59 及更早的内核把
+  # ACPI_TINY_POWER_BUTTON 编成了模块（SIGNAL=38），并在 button 驱动之外
+  # 自动加载。s2idle 唤醒时固件发出的 power-button notify 会被它转换成
+  # SIGRTMIN+4 发给 PID 1，systemd 于是直接启动 poweroff.target 关机。
+  # 内核 6.18.60 已修复，升级到该版本后即可删除此行。
+  boot.blacklistedKernelModules = [ "tiny_power_button" ];
 }

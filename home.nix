@@ -1,5 +1,9 @@
 # Home Manager 用户配置与个人软件包。
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   home-manager = {
@@ -17,26 +21,22 @@
           google-chrome
           firefox
           zed-editor-fhs
-          vscode-fhs
+          vscodium-fhs
+          sublime4
           nautilus
           alacritty
           inputs.mark-shot.packages.${pkgs.stdenv.hostPlatform.system}.default
           orchis-theme
           papirus-icon-theme
-
           wl-clipboard # 命令行剪贴板工具（wl-copy / wl-paste）
-
           splayer-next
           bilibili
-          obsidian
+          # nixpkgs 默认的 Electron 43.8.3 会让 Obsidian 显示空白窗口，
+          # 暂时固定到 Electron 42（见 NixOS/nixpkgs#578970）。
+          (pkgs.obsidian.override { electron = pkgs.electron_42; })
           obs-studio
-          # 系统监视器见 rproc.nix
-          # inputs.tuxManager.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-          vlc
-          mplayer
+          mpv
           fastfetch
-          # polkit_gnome
           noctalia
           qbittorrent
           evtest
@@ -45,7 +45,8 @@
           tesseract
           postman
           android-tools
-          rustup
+          ghostty
+          scrcpy
         ];
       };
 

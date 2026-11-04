@@ -63,6 +63,7 @@
       zlib
       openssl
       # 如果遇到其他缺失库，可在此添加
+      libseccomp
     ];
   };
 

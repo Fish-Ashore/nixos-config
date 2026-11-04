@@ -7,7 +7,18 @@
 
   programs.appimage = {
     enable = true;
-    binfmt = true; # 让系统能直接识别 AppImage
+    binfmt = true;
+
+    # 关键：在 appimage-run 的沙箱环境中加入 libseccomp
+    package = pkgs.appimage-run.override {
+      extraPkgs =
+        pkgs: with pkgs; [
+          libseccomp
+          libselinux
+          acl
+          libgudev
+        ];
+    };
   };
 
   # Flatpak
